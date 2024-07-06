@@ -44,8 +44,8 @@ public class SecurityConfig {
             "/swagger-ui/**",
             "/v3/api-docs/**",
             "/kiwi/api/v1/auth/**",
-            "/kiwi/api/v1/oauth/**",
             "/swagger-resources/**",
+            "/kiwi/api/v1/hubspot-oauth/**",
     };
     private static final String[] CORS_ALLOWED_ORIGINS = { "http://localhost:3000" };
     private static final String[] CORS_ALLOWED_METHODS = { "GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS" };

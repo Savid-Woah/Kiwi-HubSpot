@@ -12,11 +12,12 @@ DATABASE_PASSWORD: password
 JWT_SECRET: bhKfCNHBNncHFysc2Fu2MyOhVJa9L5KsqZX53CN4XCVXZrg0v6oVzSDrOca8WJcp
 
 # HubSpot
-HUBSPOT_REDIRECT_URI: http://localhost
+HUBSPOT_REDIRECT_URI: http://localhost:8080/kiwi/api/v1/hubspot-oauth/call-back
 HUBSPOT_API_URL: https://api.hubapi.com
 HUBSPOT_CLIENT_ID: 0a02715e-c8ed-41a2-ac7f-fdc0b1a2c819
 HUBSPOT_CLIENT_SECRET: a70e287f-0109-408a-9345-d902e0b72750
 HUBSPOT_KIWI_OWNER_ID: 1278915651
+HUBSPOT_OAUTH_URL: https://app.hubspot.com/oauth/authorize?client_id=${HUBSPOT_CLIENT_ID}&redirect_uri=${HUBSPOT_REDIRECT_URI}&scope=crm.schemas.deals.read%20crm.pipelines.orders.read%20crm.objects.orders.write%20oauth%20transactional-email%20tickets%20crm.objects.contacts.write%20e-commerce%20crm.objects.companies.write%20crm.objects.deals.read%20crm.objects.deals.write%20crm.objects.contacts.read
 
 # Google
 GOOGLE_CLIENT_ID: 919936836476-82vaceuap3t10do2mnuem0q07qpvol1a.apps.googleusercontent.com
