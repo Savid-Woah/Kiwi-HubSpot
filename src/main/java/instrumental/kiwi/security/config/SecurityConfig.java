@@ -39,7 +39,14 @@ public class SecurityConfig {
     private final LogoutHandler logoutHandler;
 
     private static final String LOGOUT_URL = "/kiwi/api/v1/auth/logout";
-    private static final String[] PUBLIC_URLS = { "/kiwi/api/v1/auth/**", "/kiwi/api/v1/oauth/**" }; //
+    private static final String[] PUBLIC_URLS = {
+            "/actuator/**",
+            "/swagger-ui/**",
+            "/v3/api-docs/**",
+            "/kiwi/api/v1/auth/**",
+            "/kiwi/api/v1/oauth/**",
+            "/swagger-resources/**",
+    };
     private static final String[] CORS_ALLOWED_ORIGINS = { "http://localhost:3000" };
     private static final String[] CORS_ALLOWED_METHODS = { "GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS" };
     private static final String[] CORS_ALLOWED_HEADERS = {

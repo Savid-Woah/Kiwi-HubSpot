@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import static instrumental.kiwi.exception.FieldValidationError.FIELD_REQUIRED;
+import static instrumental.kiwi.exception.FieldValidationMessage.FIELD_REQUIRED;
 
 @Data
 @Builder

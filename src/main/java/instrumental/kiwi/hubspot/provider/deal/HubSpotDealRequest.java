@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 import static com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING;
-import static instrumental.kiwi.exception.FieldValidationError.FIELD_REQUIRED;
+import static instrumental.kiwi.exception.FieldValidationMessage.FIELD_REQUIRED;
 
 @Data
 @Builder

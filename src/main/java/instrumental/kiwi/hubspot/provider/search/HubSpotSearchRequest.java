@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
-import static instrumental.kiwi.exception.FieldValidationError.FIELD_REQUIRED;
+import static instrumental.kiwi.exception.FieldValidationMessage.FIELD_REQUIRED;
 import static instrumental.kiwi.hubspot.constant.ObjectType.*;
 import static instrumental.kiwi.hubspot.param.HubSpotDealParam.DEAL_NAME;
 import static instrumental.kiwi.hubspot.param.HubSpotProductParam.NAME;

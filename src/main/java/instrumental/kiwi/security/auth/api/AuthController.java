@@ -1,5 +1,6 @@
 package instrumental.kiwi.security.auth.api;
 
+import instrumental.kiwi.response.annotation.ApiResponder;
 import instrumental.kiwi.security.annotation.WithRateLimitProtection;
 import instrumental.kiwi.security.auth.request.LoginRequest;
 import instrumental.kiwi.security.auth.request.RegisterStoreRequest;
@@ -16,26 +17,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
-@Tag(name = "Auth")
 @RestController
+@Tag(name = "Auth")
 @RequiredArgsConstructor
 @RequestMapping("kiwi/api/v1/auth/")
 public class AuthController {
 
     private final AuthService authService;
 
+    @ApiResponder
     @WithRateLimitProtection
     @PostMapping(path = "login")
     public String login(@Validated @RequestBody LoginRequest loginRequest, HttpServletResponse httpServletResponse) {
         return authService.login(loginRequest, httpServletResponse);
     }
 
+    @ApiResponder
     @WithRateLimitProtection
     @PostMapping(path = "register-store")
     public Map<String, Object> registerStore(@Validated @RequestBody RegisterStoreRequest registerStoreRequest) {
         return authService.registerStore(registerStoreRequest);
     }
 
+    @ApiResponder
     @WithRateLimitProtection
     @PostMapping(path = "register-customer")
     public Map<String, Object> registerCustomer(

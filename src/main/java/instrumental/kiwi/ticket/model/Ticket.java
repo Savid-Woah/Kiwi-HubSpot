@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "tickets")
 public class Ticket {
 
-    // Get tickets from customer and claim supplier
     @Id
     @Column(name = "ticket_id", updatable = false, nullable = false)
     private Long ticketId;
@@ -35,5 +34,4 @@ public class Ticket {
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "order_id", updatable = false, nullable = false)
     private Order order;
-
 }

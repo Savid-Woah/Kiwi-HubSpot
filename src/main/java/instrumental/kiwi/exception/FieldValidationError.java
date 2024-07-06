@@ -1,5 +1,14 @@
 package instrumental.kiwi.exception;
 
-public class FieldValidationError {
-    public static final String FIELD_REQUIRED = "Field required";
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+
+import java.io.Serializable;
+
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
+public record FieldValidationError(
+
+        String invalidOrMissingField
+
+) implements Serializable {
 }

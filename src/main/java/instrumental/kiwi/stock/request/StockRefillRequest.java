@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
-import static instrumental.kiwi.exception.FieldValidationError.FIELD_REQUIRED;
+import static instrumental.kiwi.exception.FieldValidationMessage.FIELD_REQUIRED;
 
 @Data
 @Builder

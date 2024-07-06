@@ -66,8 +66,6 @@ public class Token {
         this.user = user;
     }
 
-    // TODO: TEST RESOLVE TOKEN FLOW
-
     private Token(String token, LocalDateTime expirationTime, String refreshToken, User user, TokenSource tokenSource) {
 
         this.source = tokenSource;

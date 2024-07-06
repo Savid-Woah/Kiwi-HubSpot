@@ -9,8 +9,6 @@ import instrumental.kiwi.security.config.service.JwtService;
 import instrumental.kiwi.security.config.service.OAuth2AuthenticationSuccessHandler;
 import instrumental.kiwi.ticket.request.TicketRequest;
 import instrumental.kiwi.ticket.service.TicketService;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,15 +21,12 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.HashMap;
 import java.util.Map;
 
-import static instrumental.kiwi.exception.FieldValidationError.FIELD_REQUIRED;
 import static instrumental.kiwi.exception.MsgCode.ORDER_NOT_FOUND;
 import static org.mockito.ArgumentMatchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.mockito.Mockito.when;
 

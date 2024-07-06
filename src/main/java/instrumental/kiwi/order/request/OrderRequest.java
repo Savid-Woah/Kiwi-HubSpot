@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-import static instrumental.kiwi.exception.FieldValidationError.FIELD_REQUIRED;
+import static instrumental.kiwi.exception.FieldValidationMessage.FIELD_REQUIRED;
 
 @Data
 @Builder

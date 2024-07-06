@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import static instrumental.kiwi.exception.FieldValidationError.FIELD_REQUIRED;
+import static instrumental.kiwi.exception.FieldValidationMessage.FIELD_REQUIRED;
 import static instrumental.kiwi.hubspot.param.HubSpotProductParam.COMPANY_ID;
 import static instrumental.kiwi.hubspot.param.HubSpotTicketParam.ORDER_ID;
 import static instrumental.kiwi.hubspot.provider.search.HubSpotSearchOperator.EQUAL;
