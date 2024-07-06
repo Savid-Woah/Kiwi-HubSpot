@@ -12,6 +12,7 @@ import instrumental.kiwi.order.model.Order;
 import instrumental.kiwi.order.repository.OrderRepository;
 import instrumental.kiwi.product.model.Product;
 import instrumental.kiwi.product.repository.ProductRepository;
+import instrumental.kiwi.response.Response;
 import instrumental.kiwi.ticket.dto.TicketDTO;
 import instrumental.kiwi.ticket.mapper.TicketDTOMapper;
 import instrumental.kiwi.ticket.mapper.TicketHubSpotMapper;
@@ -20,19 +21,18 @@ import instrumental.kiwi.ticket.repository.TicketRepository;
 import instrumental.kiwi.ticket.request.TicketRequest;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import static instrumental.kiwi.exception.MsgCode.*;
+import static instrumental.kiwi.exception.MsgCode.ORDER_NOT_FOUND;
+import static instrumental.kiwi.exception.MsgCode.PRODUCT_NOT_FOUND;
 import static instrumental.kiwi.hubspot.constant.AssociationCategory.HUBSPOT_DEFINED;
 import static instrumental.kiwi.hubspot.constant.AssociationTypeId.TICKET_TO_ORDER;
 import static instrumental.kiwi.hubspot.provider.search.HubSpotSearchRequest.buildForTicketByOrder;
-import static instrumental.kiwi.response.handler.ResponseHandler.generateResponse;
 import static instrumental.kiwi.response.message.ResponseMessage.TICKET_ADDED;
+import static instrumental.kiwi.response.utils.ResponseUtils.generateResponse;
 import static org.springframework.http.HttpStatus.CREATED;
 
 @Service
@@ -55,7 +55,7 @@ public class TicketService {
         return hubSpotSearchProvider.search(searchRequest);
     }
 
-    public Map<String, Object> addTicket(TicketRequest ticketRequest) {
+    public Response addTicket(TicketRequest ticketRequest) {
 
         String orderId = ticketRequest.getOrderId().toString();
         AssociationRequest associationRequest = buildAssociationRequest(orderId);

@@ -7,7 +7,7 @@ Feature: Testing Step-by-Step API Flow
 
     # Step 1: Get access token
     Given path 'kiwi/api/v1/oauth/get-access-token'
-    And param code = '9c4590c0-a033-402c-8c7c-fe1d8cb9aeaf'
+    And param code = 'c1f3db41-d30c-4c04-affd-cec181aa5587'
     When method post
     Then status 200
     And def accessToken = response.token

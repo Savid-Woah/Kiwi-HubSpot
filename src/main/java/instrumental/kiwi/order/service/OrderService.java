@@ -16,21 +16,20 @@ import instrumental.kiwi.order.repository.OrderRepository;
 import instrumental.kiwi.order.request.OrderRequest;
 import instrumental.kiwi.product.model.Product;
 import instrumental.kiwi.product.service.ProductService;
+import instrumental.kiwi.response.Response;
 import instrumental.kiwi.stock.service.StockService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import static instrumental.kiwi.exception.MsgCode.CUSTOMER_NOT_FOUND;
 import static instrumental.kiwi.hubspot.constant.AssociationCategory.HUBSPOT_DEFINED;
 import static instrumental.kiwi.hubspot.constant.AssociationTypeId.ORDER_TO_LINE_ITEM;
-import static instrumental.kiwi.response.handler.ResponseHandler.generateResponse;
 import static instrumental.kiwi.response.message.ResponseMessage.ORDER_ADDED;
+import static instrumental.kiwi.response.utils.ResponseUtils.generateResponse;
 import static org.springframework.http.HttpStatus.CREATED;
 
 @Service
@@ -49,7 +48,7 @@ public class OrderService {
     private final HubSpotOrderProvider hubSpotOrderProvider;
     private final HubSpotLineItemProvider hubSpotLineItemProvider;
 
-    public Map<String, Object> placeOrder(OrderRequest orderRequest) {
+    public Response placeOrder(OrderRequest orderRequest) {
 
         List<AssociationRequest> associations = handleOrderLineItems(orderRequest);
         String createdHubspotOrder = hubSpotOrderProvider.postOrder(orderRequest, associations);

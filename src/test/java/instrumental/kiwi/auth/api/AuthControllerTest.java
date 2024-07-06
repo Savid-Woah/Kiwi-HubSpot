@@ -3,6 +3,7 @@ package instrumental.kiwi.auth.api;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import instrumental.kiwi.customer.request.CustomerRequest;
 import instrumental.kiwi.exception.MessageTextResolver;
+import instrumental.kiwi.response.Response;
 import instrumental.kiwi.security.auth.api.AuthController;
 import instrumental.kiwi.security.auth.request.LoginRequest;
 import instrumental.kiwi.security.auth.request.RegisterCustomerRequest;
@@ -25,9 +26,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.Map;
-
-import static instrumental.kiwi.response.handler.ResponseHandler.generateResponse;
+import static instrumental.kiwi.response.utils.ResponseUtils.generateResponse;
 import static instrumental.kiwi.response.message.ResponseMessage.CUSTOMER_REGISTERED;
 import static instrumental.kiwi.response.message.ResponseMessage.STORE_REGISTERED;
 import static org.mockito.ArgumentMatchers.any;
@@ -111,7 +110,7 @@ public class AuthControllerTest {
                 .build();
 
         // and "an expected result"
-        Map<String, Object> response = generateResponse(CREATED, STORE_REGISTERED);
+        Response response = generateResponse(CREATED, STORE_REGISTERED);
 
         // when "mocked behaviour"
         when(authService.registerStore(registerStoreRequest)).thenReturn(response);
@@ -153,7 +152,7 @@ public class AuthControllerTest {
                 .build();
 
         // and "an expected result"
-        Map<String, Object> response = generateResponse(CREATED, CUSTOMER_REGISTERED);
+        Response response = generateResponse(CREATED, CUSTOMER_REGISTERED);
 
         // when "mocked behaviour"
         when(authService.registerCustomer(registerCustomerRequest)).thenReturn(response);

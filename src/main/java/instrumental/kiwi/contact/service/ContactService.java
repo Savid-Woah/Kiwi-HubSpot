@@ -7,6 +7,7 @@ import instrumental.kiwi.exception.BackendException;
 import instrumental.kiwi.hubspot.provider.contact.HubSpotContactProvider;
 import instrumental.kiwi.hubspot.provider.search.HubSpotSearchProvider;
 import instrumental.kiwi.hubspot.provider.search.HubSpotSearchRequest;
+import instrumental.kiwi.response.Response;
 import instrumental.kiwi.store.model.Store;
 import instrumental.kiwi.store.repository.StoreRepository;
 import instrumental.kiwi.contact.mapper.ContactDTOMapper;
@@ -16,11 +17,9 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
-
 import static instrumental.kiwi.exception.MsgCode.STORE_NOT_FOUND;
 import static instrumental.kiwi.hubspot.provider.search.HubSpotSearchRequest.buildForContactsByStore;
-import static instrumental.kiwi.response.handler.ResponseHandler.generateResponse;
+import static instrumental.kiwi.response.utils.ResponseUtils.generateResponse;
 import static instrumental.kiwi.response.message.ResponseMessage.CONTACT_ADDED;
 import static org.springframework.http.HttpStatus.CREATED;
 
@@ -36,7 +35,7 @@ public class ContactService {
     private final HubSpotSearchProvider hubSpotSearchProvider;
     private final HubSpotContactProvider hubSpotContactProvider;
 
-    public Map<String, Object> addContact(ContactRequest contactRequest) {
+    public Response addContact(ContactRequest contactRequest) {
 
         String createdContact = hubSpotContactProvider.postContact(contactRequest);
         Contact contact = contactHubSpotMapper.apply(createdContact);

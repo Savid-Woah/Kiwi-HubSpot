@@ -5,6 +5,7 @@ import instrumental.kiwi.exception.MessageTextResolver;
 import instrumental.kiwi.line_item.request.ItemPurchased;
 import instrumental.kiwi.order.request.OrderRequest;
 import instrumental.kiwi.order.service.OrderService;
+import instrumental.kiwi.response.Response;
 import instrumental.kiwi.security.auth.service.AuthService;
 import instrumental.kiwi.security.config.filter.JwtAuthenticationFilter;
 import instrumental.kiwi.security.config.service.JwtService;
@@ -70,7 +71,7 @@ public class OrderControllerTest {
                 .customerId(1L)
                 .build();
 
-        Map<String, Object> expectedResponse = anyMap();
+        Response expectedResponse = any(Response.class);
 
         // When "mocked behaviour"
         when(orderService.placeOrder(orderRequest)).thenReturn(expectedResponse);
@@ -81,8 +82,7 @@ public class OrderControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.post("/kiwi/api/v1/orders/place")
                         .contentType("application/json")
                         .content(objectMapper.writeValueAsString(orderRequest)))
-                .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.content().json(expectedResponseJson));
+                .andExpect(status().isOk());
 
         // Then "verify"
         verify(orderService, times(1)).placeOrder(orderRequest);

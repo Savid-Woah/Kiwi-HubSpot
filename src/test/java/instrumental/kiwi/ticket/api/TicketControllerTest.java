@@ -3,6 +3,7 @@ package instrumental.kiwi.ticket.api;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import instrumental.kiwi.exception.BackendException;
 import instrumental.kiwi.exception.MessageTextResolver;
+import instrumental.kiwi.response.Response;
 import instrumental.kiwi.security.auth.service.AuthService;
 import instrumental.kiwi.security.config.filter.JwtAuthenticationFilter;
 import instrumental.kiwi.security.config.service.JwtService;
@@ -52,7 +53,7 @@ public class TicketControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
     private TicketRequest ticketRequest;
-    private Map<String, Object> responseMap;
+    private Response response;
 
     @BeforeEach
     void setUp() {
@@ -85,7 +86,7 @@ public class TicketControllerTest {
     void shouldAddTicket() throws Exception {
 
         //When "service called"
-        when(ticketService.addTicket(ticketRequest)).thenReturn(responseMap);
+        when(ticketService.addTicket(ticketRequest)).thenReturn(response);
 
         // and "endpoint hit"
         mockMvc.perform(post("/kiwi/api/v1/tickets/add")

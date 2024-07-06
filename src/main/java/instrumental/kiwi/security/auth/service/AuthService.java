@@ -1,21 +1,20 @@
 package instrumental.kiwi.security.auth.service;
 
 import instrumental.kiwi.customer.dto.CustomerDTO;
-import instrumental.kiwi.customer.model.Customer;
-import instrumental.kiwi.store.dto.StoreDTO;
-import instrumental.kiwi.store.model.Store;
-import instrumental.kiwi.store.request.StoreRequest;
-import instrumental.kiwi.store.service.StoreService;
 import instrumental.kiwi.customer.request.CustomerRequest;
 import instrumental.kiwi.customer.service.CustomerService;
 import instrumental.kiwi.exception.BackendException;
+import instrumental.kiwi.response.Response;
 import instrumental.kiwi.security.auth.request.LoginRequest;
-import instrumental.kiwi.security.auth.request.RegisterStoreRequest;
 import instrumental.kiwi.security.auth.request.RegisterCustomerRequest;
+import instrumental.kiwi.security.auth.request.RegisterStoreRequest;
 import instrumental.kiwi.security.config.service.JwtService;
 import instrumental.kiwi.security.user.model.User;
 import instrumental.kiwi.security.user.request.UserRequest;
 import instrumental.kiwi.security.user.service.UserService;
+import instrumental.kiwi.store.dto.StoreDTO;
+import instrumental.kiwi.store.request.StoreRequest;
+import instrumental.kiwi.store.service.StoreService;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -24,11 +23,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
-
 import static instrumental.kiwi.exception.MsgCode.OOPS_ERROR;
-import static instrumental.kiwi.response.handler.ResponseHandler.generateResponse;
-import static instrumental.kiwi.response.message.ResponseMessage.*;
+import static instrumental.kiwi.response.message.ResponseMessage.CUSTOMER_REGISTERED;
+import static instrumental.kiwi.response.message.ResponseMessage.STORE_REGISTERED;
+import static instrumental.kiwi.response.utils.ResponseUtils.generateResponse;
 import static instrumental.kiwi.security.user.enums.Role.CUSTOMER;
 import static instrumental.kiwi.security.user.enums.Role.STORE;
 import static org.springframework.http.HttpStatus.CREATED;
@@ -64,7 +62,7 @@ public class AuthService {
         }
     }
 
-    public Map<String, Object> registerStore(RegisterStoreRequest registerStoreRequest) {
+    public Response registerStore(RegisterStoreRequest registerStoreRequest) {
 
         UserRequest userRequest = registerStoreRequest.getUserRequest();
         StoreRequest storeRequest = registerStoreRequest.getStoreRequest();
@@ -73,7 +71,7 @@ public class AuthService {
         return generateResponse(storeDTO, CREATED, STORE_REGISTERED);
     }
 
-    public Map<String, Object> registerCustomer(RegisterCustomerRequest registerCustomerRequest) {
+    public Response registerCustomer(RegisterCustomerRequest registerCustomerRequest) {
 
         UserRequest userRequest = registerCustomerRequest.getUserRequest();
         CustomerRequest customerRequest = registerCustomerRequest.getCustomerRequest();

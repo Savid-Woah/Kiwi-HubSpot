@@ -2,6 +2,7 @@ package instrumental.kiwi.response.annotation;
 
 import instrumental.kiwi.exception.Error;
 import instrumental.kiwi.exception.FieldValidationError;
+import instrumental.kiwi.response.Response;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -17,7 +18,8 @@ import java.lang.annotation.Target;
 @ApiResponses({
         @ApiResponse(
                 responseCode = "200",
-                description = "Successful operation"),
+                description = "Successful operation",
+                content = @Content(schema = @Schema(implementation = Response.class))),
         @ApiResponse(
                 responseCode = "400",
                 description = "Bad request",

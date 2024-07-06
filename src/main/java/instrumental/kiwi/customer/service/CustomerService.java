@@ -1,7 +1,5 @@
 package instrumental.kiwi.customer.service;
 
-import instrumental.kiwi.store.model.Store;
-import instrumental.kiwi.store.repository.StoreRepository;
 import instrumental.kiwi.customer.dto.CustomerDTO;
 import instrumental.kiwi.customer.mapper.CustomerDTOMapper;
 import instrumental.kiwi.customer.model.Customer;
@@ -9,6 +7,8 @@ import instrumental.kiwi.customer.repository.CustomerRepository;
 import instrumental.kiwi.customer.request.CustomerRequest;
 import instrumental.kiwi.exception.BackendException;
 import instrumental.kiwi.security.user.model.User;
+import instrumental.kiwi.store.model.Store;
+import instrumental.kiwi.store.repository.StoreRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

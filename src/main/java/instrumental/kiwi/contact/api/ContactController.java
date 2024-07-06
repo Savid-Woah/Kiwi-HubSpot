@@ -2,14 +2,13 @@ package instrumental.kiwi.contact.api;
 
 import instrumental.kiwi.contact.request.ContactRequest;
 import instrumental.kiwi.contact.service.ContactService;
+import instrumental.kiwi.response.Response;
 import instrumental.kiwi.response.annotation.ApiResponder;
 import instrumental.kiwi.security.annotation.WithRateLimitProtection;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
 
 @RestController
 @Tag(name = "Contact")
@@ -22,7 +21,7 @@ public class ContactController {
     @ApiResponder
     @WithRateLimitProtection
     @PostMapping(path = "add")
-    public Map<String, Object> addContact(@Validated @RequestBody ContactRequest contactRequest) {
+    public Response addContact(@Validated @RequestBody ContactRequest contactRequest) {
         return contactService.addContact(contactRequest);
     }
 

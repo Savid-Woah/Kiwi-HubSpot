@@ -1,12 +1,12 @@
 package instrumental.kiwi.store.service;
 
 import instrumental.kiwi.hubspot.provider.company.HubSpotCompanyProvider;
+import instrumental.kiwi.security.user.model.User;
 import instrumental.kiwi.store.dto.StoreDTO;
 import instrumental.kiwi.store.mapper.StoreDTOMapper;
 import instrumental.kiwi.store.model.Store;
 import instrumental.kiwi.store.repository.StoreRepository;
 import instrumental.kiwi.store.request.StoreRequest;
-import instrumental.kiwi.security.user.model.User;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

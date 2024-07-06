@@ -9,6 +9,7 @@ import instrumental.kiwi.order.model.Order;
 import instrumental.kiwi.order.repository.OrderRepository;
 import instrumental.kiwi.product.model.Product;
 import instrumental.kiwi.product.repository.ProductRepository;
+import instrumental.kiwi.response.Response;
 import instrumental.kiwi.ticket.dto.TicketDTO;
 import instrumental.kiwi.ticket.mapper.TicketDTOMapper;
 import instrumental.kiwi.ticket.mapper.TicketHubSpotMapper;
@@ -107,7 +108,7 @@ public class TicketServiceTest {
         when(ticketRepository.save(any(Ticket.class))).thenReturn(ticket);
         when(ticketDTOMapper.apply(any(Ticket.class))).thenReturn(new TicketDTO(0L));
 
-        Map<String, Object> response = ticketService.addTicket(ticketRequest);
+        Response response = ticketService.addTicket(ticketRequest);
 
         // Then
         assertNotNull(response);

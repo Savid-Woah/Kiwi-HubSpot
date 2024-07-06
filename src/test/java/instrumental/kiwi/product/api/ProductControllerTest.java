@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import instrumental.kiwi.exception.MessageTextResolver;
 import instrumental.kiwi.product.request.ProductRequest;
 import instrumental.kiwi.product.service.ProductService;
+import instrumental.kiwi.response.Response;
 import instrumental.kiwi.security.auth.service.AuthService;
 import instrumental.kiwi.security.config.filter.JwtAuthenticationFilter;
 import instrumental.kiwi.security.config.service.JwtService;
@@ -77,7 +78,7 @@ public class ProductControllerTest {
                 .build();
 
         // When "mocked behaviour"
-        when(productService.addProduct(any(ProductRequest.class))).thenReturn(anyMap());
+        when(productService.addProduct(any(ProductRequest.class))).thenReturn(any(Response.class));
 
         // and "endpoint hit"
         mockMvc.perform(post("/kiwi/api/v1/products/add")

@@ -12,21 +12,19 @@ import instrumental.kiwi.product.mapper.ProductHubSpotMapper;
 import instrumental.kiwi.product.model.Product;
 import instrumental.kiwi.product.repository.ProductRepository;
 import instrumental.kiwi.product.request.ProductRequest;
+import instrumental.kiwi.response.Response;
 import instrumental.kiwi.stock.request.StockData;
 import instrumental.kiwi.stock.service.StockService;
 import instrumental.kiwi.store.model.Store;
 import instrumental.kiwi.store.repository.StoreRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-
-import java.util.Map;
 
 import static instrumental.kiwi.exception.MsgCode.*;
 import static instrumental.kiwi.hubspot.provider.search.HubSpotSearchRequest.buildForProductByStore;
-import static instrumental.kiwi.response.handler.ResponseHandler.generateResponse;
 import static instrumental.kiwi.response.message.ResponseMessage.PRODUCT_ADDED;
+import static instrumental.kiwi.response.utils.ResponseUtils.generateResponse;
 import static org.springframework.http.HttpStatus.CREATED;
 
 @Service
@@ -49,7 +47,7 @@ public class ProductService {
         return hubSpotSearchProvider.search(searchRequest);
     }
 
-    public Map<String, Object> addProduct(ProductRequest productRequest) {
+    public Response addProduct(ProductRequest productRequest) {
 
         String createdHubspotProduct = hubSpotProductProvider.postProduct(productRequest);
         Product product = productHubSpotMapper.apply(createdHubspotProduct);

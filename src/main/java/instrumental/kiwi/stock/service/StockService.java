@@ -16,10 +16,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-import java.util.UUID;
 import java.util.function.BiConsumer;
 
-import static instrumental.kiwi.exception.MsgCode.*;
+import static instrumental.kiwi.exception.MsgCode.PRODUCT_NOT_FOUND;
+import static instrumental.kiwi.exception.MsgCode.STOCK_NOT_FOUND;
 
 @Service
 @Transactional

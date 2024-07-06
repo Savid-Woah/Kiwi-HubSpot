@@ -11,6 +11,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.stereotype.Service;
 
+import static instrumental.kiwi.security.token.prefix.TokenPrefix.BEARER_PREFIX;
+import static org.springframework.http.HttpHeaders.AUTHORIZATION;
+
 @Service
 @RequiredArgsConstructor
 public class LogoutService implements LogoutHandler {
@@ -26,9 +29,9 @@ public class LogoutService implements LogoutHandler {
             Authentication authentication
     ) {
 
-        final String authHeader = request.getHeader("Authorization");
+        final String authHeader = request.getHeader(AUTHORIZATION);
 
-        if(authHeader == null || !authHeader.startsWith("Bearer ")) {
+        if(authHeader == null || !authHeader.startsWith(BEARER_PREFIX)) {
             return;
         }
 
