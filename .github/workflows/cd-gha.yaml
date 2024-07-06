@@ -12,7 +12,7 @@ jobs:
     steps:
 
       - name: Pull Docker image
-        run: sudo docker pull batsavid/kiwi-hubspot:latest
+        run: sudo docker pull batsavid/kiwi-hubspot-dev:latest
 
       - name: Delete Old kiwi-hubspot docker container
         run: sudo docker rm -f kiwi-hubspot || true
