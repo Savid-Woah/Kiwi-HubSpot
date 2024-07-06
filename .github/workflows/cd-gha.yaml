@@ -1,0 +1,34 @@
+name: CD Pipeline
+
+on:
+  workflow_run:
+    workflows: ["CI Pipeline"]
+    types:
+      - completed
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+
+      - name: Pull Docker image
+        run: sudo docker pull batsavid/kiwi-hubspot:latest
+
+      - name: Delete Old kiwi-hubspot docker container
+        run: sudo docker rm -f kiwi-hubspot || true
+
+      - name: Start Or Refresh Service
+        run: |
+          if sudo docker ps --filter "name=kiwi-hubspot" --format "{{.Names}}" | grep -q "kiwi-hubspot"; then
+            echo "kiwi-hubspot is running, executing custom logic..."
+            sudo docker stop kiwi-hubspot
+            sudo docker rm kiwi-hubspot --force
+            sudo docker rmi batsavid/kiwi-hubspot:latest
+            sudo /home/ubuntu/update-app.sh
+          else
+            echo "kiwi-hubspot is not running, starting services with docker-compose..."
+            sudo /home/ubuntu/start.sh
+          fi
+
+      - name: Remove dangling images
+        run: sudo docker image prune -f
