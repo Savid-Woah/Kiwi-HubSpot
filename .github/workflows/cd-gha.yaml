@@ -23,7 +23,7 @@ jobs:
             echo "kiwi-hubspot is running, executing custom logic..."
             sudo docker stop kiwi-hubspot
             sudo docker rm kiwi-hubspot --force
-            sudo docker rmi batsavid/kiwi-hubspot:latest
+            sudo docker rmi batsavid/kiwi-hubspot-dev:latest
             sudo /home/ubuntu/update-app.sh
           else
             echo "kiwi-hubspot is not running, starting services with docker-compose..."
