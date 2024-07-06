@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+
+  postgres_db:
+    container_name: postgres_db
+    image: postgres:latest
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=postgres
+
+  kiwi-hubspot:
+    container_name: kiwi-hubspot
+    image: kiwi-hubspot:latest
+    build: .
+    ports:
+      - '8080:8080'
+    env_file:
+      - ${ENV_FILE}
+    depends_on:
+      - postgres_db
+
+  nginx-proxy-manager:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt

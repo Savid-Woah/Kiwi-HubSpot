@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Change Request</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .content {
+            margin-bottom: 20px;
+        }
+        .footer {
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">Product Change Solitude</div>
+    <div class="content">
+        <p>Dear Supplier,</p>
+        <p>We are writing to inform you that we need a change for the following product:</p>
+        <ul>
+            <li><strong>Product Name:</strong> [[${productName}]]</li>
+            <li><strong>Product SKU:</strong> [[${productSku}]]</li>
+        </ul>
+        <p>This request is coming from:</p>
+        <ul>
+            <li><strong>Store Name:</strong> [[${storeName}]]</li>
+            <li><strong>Store Phone Number:</strong> [[${storePhoneNumber}]]</li>
+            <li><strong>Store City:</strong> [[${storeCity}]]</li>
+            <li><strong>Store State:</strong> [[${storeState}]]</li>
+        </ul>
+        <p>Please address this request at your earliest convenience. Thank you for your prompt attention to this matter.</p>
+    </div>
+    <div class="footer">
+        <p>Best regards,</p>
+        <p>Your Company</p>
+        <p>Date: [[${date}]]</p>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Bill</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .content {
+            margin-bottom: 20px;
+        }
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+        }
+        .highlight {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Order Bill</h1>
+    </div>
+    <div class="content">
+        <p>Dear Customer,</p>
+        <p>Thank you for your order. Here are the details of your recent purchase:</p>
+        <ul>
+            <li><span class="highlight">Date:</span> [[${date}]]</li>
+            <li><span class="highlight">Store Name:</span> [[${storeName}]]</li>
+            <li><span class="highlight">Store City:</span> [[${storeCity}]]</li>
+            <li><span class="highlight">Store State:</span> [[${storeState}]]</li>
+            <li><span class="highlight">Total Price:</span> $[[${total_price}]]</li>
+            <li><span class="highlight">Store Phone Number:</span> [[${storePhoneNumber}]]</li>
+        </ul>
+        <p>We appreciate your business and hope to serve you again soon.</p>
+    </div>
+    <div class="footer">
+        <p>If you have any questions, please contact us at [[${storePhoneNumber}]].</p>
+    </div>
+</div>
+</body>
+</html>
