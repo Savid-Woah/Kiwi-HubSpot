@@ -7,7 +7,7 @@ Feature: Testing Step-by-Step API Flow
 
     # Step 1: Get access token
     Given path 'kiwi/api/v1/hubspot-oauth/get-access-token'
-    And param code = '454f7ad9-2234-469c-bc9d-e5f838c19571'
+    And param code = '647793c1-067b-4c98-b92a-577847678106'
     When method post
     Then status 200
     And def accessToken = response.token

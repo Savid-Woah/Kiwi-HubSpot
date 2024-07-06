@@ -86,11 +86,14 @@ class ProductServiceTest {
     @DisplayName(value = "Should get all products by store")
     void getAllProductsByStore() {
 
+        // Given
         HubSpotSearchRequest searchRequest = buildForProductByStore(1L, 10);
-        when(hubSpotSearchProvider.search(any(HubSpotSearchRequest.class))).thenReturn("searchResults");
 
+        // When
+        when(hubSpotSearchProvider.search(any(HubSpotSearchRequest.class))).thenReturn("searchResults");
         String result = productService.getAllProductsByStore(1L, 10);
 
+        // Then
         verify(hubSpotSearchProvider, times(1)).search(searchRequest);
         assertEquals("searchResults", result);
     }
@@ -99,6 +102,7 @@ class ProductServiceTest {
     @DisplayName(value = "Should add product")
     void addProduct() {
 
+        // When "mocked behaviour"
         when(storeRepository.findById(1L)).thenReturn(Optional.of(store));
         when(contactRepository.findById(1L)).thenReturn(Optional.of(contact));
         when(hubSpotProductProvider.postProduct(any(ProductRequest.class))).thenReturn("{}");
@@ -107,6 +111,7 @@ class ProductServiceTest {
 
         productService.addProduct(productRequest);
 
+        // Then "expect"
         verify(storeRepository, times(1)).findById(1L);
         verify(contactRepository, times(1)).findById(1L);
         verify(hubSpotProductProvider, times(1)).postProduct(productRequest);
